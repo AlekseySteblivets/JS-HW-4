@@ -21,18 +21,39 @@
 // колбэк-функцию и возвращала ее вызов. Функция deliverPizza или makePizza будет передаваться как колбэк и ожидать 
 // аргументом имя готовой доставляемой пиццы.
 
-function deliverPizza(pizzaName) {
-    return `Доставляем пиццу ${pizzaName}.`;
-  }
+// function deliverPizza(pizzaName) {
+//     return `Доставляем пиццу ${pizzaName}.`;
+//   }
   
-  function makePizza(pizzaName) {
-    return `Пицца ${pizzaName} готовится, ожидайте...`;
-  }
+//   function makePizza(pizzaName) {
+//     return `Пицца ${pizzaName} готовится, ожидайте...`;
+//   }
   
-  // Пиши код ниже этой строки
-  function makeMessage(pizzaName, callback) {
-    return callback(pizzaName);
-  }
+//   // Пиши код ниже этой строки
+//   function makeMessage(pizzaName, callback) {
+//     return callback(pizzaName);
+//   }
 
-  console.log(makeMessage('Роял гранд', makePizza));
-  console.log(makeMessage('Ультрасыр', deliverPizza));
+//   console.log(makeMessage('Роял гранд', makePizza));
+//   console.log(makeMessage('Ультрасыр', deliverPizza));
+
+
+
+// 4-3-10Дополни второй вызов функции makePizza(pizzaName, callback), передав вторым аргументом инлайн 
+// колбэк-функцию eatPizza(pizzaName), которая логирует строку 'Едим пиццу <имя пиццы>'.
+
+function makePizza(pizzaName, callback) {
+    console.log(`Пицца ${pizzaName} готовится, ожидайте...`);
+    callback(pizzaName);
+  }
+  
+  makePizza('Роял гранд', function deliverPizza(pizzaName) {
+    console.log(`Доставляем пиццу ${pizzaName}.`);
+  });
+  // Пиши код ниже этой строки
+  
+  makePizza('Ультрасыр', function eatPizza(pizzaName) {
+      console.log(`Едим пиццу ${pizzaName}`);
+  });
+  
+  
