@@ -66,32 +66,58 @@
 // передавая ему аргументом имя заказанной пиццы.
 // После объявления объекта pizzaPalace мы добавили колбэки и вызовы методов. Пожалуйста ничего там не меняй.
 
+// const pizzaPalace = {
+//     pizzas: ['Ультрасыр', 'Аль Копчино', 'Четыре нарезона'],
+//     order(pizzaName, callbackOnSuccess, callbackOnError) {
+//         for (const pizza of this.pizzas) {
+//             if(pizza === pizzaName) {
+//                 return callbackOnSuccess(pizzaName);
+//             }  
+//         }
+//         return callbackOnError(`В ассортименте нет пиццы с названием ${pizzaName}.`);
+//     },
+//   };
+//   // Пиши код выше этой строки
+  
+//   // Колбэк для onSuccess
+//   function makePizza(pizzaName) {
+//     return `Ваш заказ принят. Готовим пиццу ${pizzaName}.`;
+//   }
+  
+//   // Колбэк для onError
+//   function onOrderError(error) {
+//     return `Ошибка! ${error}`;
+//   }
+  
+//   // Вызовы метода с колбэками
+//   console.log(pizzaPalace.order('Аль Копчино', makePizza, onOrderError));
+//   console.log(pizzaPalace.order('Четыре нарезона', makePizza, onOrderError));
+//   console.log(pizzaPalace.order('Биг майк', makePizza, onOrderError));
+//   console.log(pizzaPalace.order('Венская', makePizza, onOrderError));
+  
+
+
+// 4-5-10Выполни рефакторинг методов объекта pizzaPalace, расставив отсутствующие this в местах обращения к свойствам и методам объекта.
 const pizzaPalace = {
     pizzas: ['Ультрасыр', 'Аль Копчино', 'Четыре нарезона'],
-    order(pizzaName, callbackOnSuccess, callbackOnError) {
-        for (const pizza of this.pizzas) {
-            if(pizza === pizzaName) {
-                return callbackOnSuccess(pizzaName);
-            }  
-        }
-        return callbackOnError(`В ассортименте нет пиццы с названием ${pizzaName}.`);
+    // Пиши код ниже этой строки
+    checkPizza(pizzaName) {
+      return this.pizzas.includes(pizzaName);
     },
+    order(pizzaName) {
+      const isPizzaAvailable = this.checkPizza(pizzaName);
+  
+      if (!isPizzaAvailable) {
+        return `В ассортименте нет пиццы с названием «${pizzaName}».`;
+      }
+  
+      return `Заказ принят, готовим пиццу «${pizzaName}».`;
+    },
+    // Пиши код выше этой строки
   };
-  // Пиши код выше этой строки
   
-  // Колбэк для onSuccess
-  function makePizza(pizzaName) {
-    return `Ваш заказ принят. Готовим пиццу ${pizzaName}.`;
-  }
-  
-  // Колбэк для onError
-  function onOrderError(error) {
-    return `Ошибка! ${error}`;
-  }
-  
-  // Вызовы метода с колбэками
-  console.log(pizzaPalace.order('Аль Копчино', makePizza, onOrderError));
-  console.log(pizzaPalace.order('Четыре нарезона', makePizza, onOrderError));
-  console.log(pizzaPalace.order('Биг майк', makePizza, onOrderError));
-  console.log(pizzaPalace.order('Венская', makePizza, onOrderError));
-  
+
+  console.log(pizzaPalace.order('Аль Копчино'));
+  console.log(pizzaPalace.order('Четыре нарезона'));
+  console.log(pizzaPalace.order('Биг майк'));
+  console.log(pizzaPalace.order('Венская'));
