@@ -98,26 +98,65 @@
 
 
 // 4-5-10Выполни рефакторинг методов объекта pizzaPalace, расставив отсутствующие this в местах обращения к свойствам и методам объекта.
-const pizzaPalace = {
-    pizzas: ['Ультрасыр', 'Аль Копчино', 'Четыре нарезона'],
+// const pizzaPalace = {
+//     pizzas: ['Ультрасыр', 'Аль Копчино', 'Четыре нарезона'],
+//     // Пиши код ниже этой строки
+//     checkPizza(pizzaName) {
+//       return this.pizzas.includes(pizzaName);
+//     },
+//     order(pizzaName) {
+//       const isPizzaAvailable = this.checkPizza(pizzaName);
+  
+//       if (!isPizzaAvailable) {
+//         return `В ассортименте нет пиццы с названием «${pizzaName}».`;
+//       }
+  
+//       return `Заказ принят, готовим пиццу «${pizzaName}».`;
+//     },
+//     // Пиши код выше этой строки
+//   };
+  
+
+//   console.log(pizzaPalace.order('Аль Копчино'));
+//   console.log(pizzaPalace.order('Четыре нарезона'));
+//   console.log(pizzaPalace.order('Биг майк'));
+//   console.log(pizzaPalace.order('Венская'));
+
+
+
+// 4-6-10Перед увольнением разработчик сломал исходный код управления аккаунтами пользователей нашего сервиса доставки еды. 
+// Выполни рефакторинг методов объекта customer, расставив отсутствующие this при обращении к свойствам объекта.
+// После объявления объекта мы добавили вызовы методов в той последовательности, в которой твой код будут проверять тесты. 
+// Пожалуйста ничего там не меняй.
+
+const customer = {
+    username: 'Mango',
+    balance: 24000,
+    discount: 0.1,
+    orders: ['Burger', 'Pizza', 'Salad'],
     // Пиши код ниже этой строки
-    checkPizza(pizzaName) {
-      return this.pizzas.includes(pizzaName);
+    getBalance() {
+      return this.balance;
     },
-    order(pizzaName) {
-      const isPizzaAvailable = this.checkPizza(pizzaName);
-  
-      if (!isPizzaAvailable) {
-        return `В ассортименте нет пиццы с названием «${pizzaName}».`;
-      }
-  
-      return `Заказ принят, готовим пиццу «${pizzaName}».`;
+    getDiscount() {
+      return this.discount;
+    },
+    setDiscount(value) {
+      this.discount = value;
+    },
+    getOrders() {
+      return this.orders;
+    },
+    addOrder(cost, order) {
+      this.balance -= cost - cost * this.discount;
+      this.orders.push(order);
     },
     // Пиши код выше этой строки
   };
   
-
-  console.log(pizzaPalace.order('Аль Копчино'));
-  console.log(pizzaPalace.order('Четыре нарезона'));
-  console.log(pizzaPalace.order('Биг майк'));
-  console.log(pizzaPalace.order('Венская'));
+  customer.setDiscount(0.15);
+  console.log(customer.getDiscount()); // 0.15
+  customer.addOrder(5000, 'Steak');
+  console.log(customer.getBalance()); // 19750
+  console.log(customer.getOrders()); // ['Burger', 'Pizza', 'Salad', 'Steak']
+  
