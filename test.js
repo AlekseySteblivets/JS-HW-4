@@ -129,34 +129,59 @@
 // После объявления объекта мы добавили вызовы методов в той последовательности, в которой твой код будут проверять тесты. 
 // Пожалуйста ничего там не меняй.
 
-const customer = {
-    username: 'Mango',
-    balance: 24000,
-    discount: 0.1,
-    orders: ['Burger', 'Pizza', 'Salad'],
-    // Пиши код ниже этой строки
-    getBalance() {
-      return this.balance;
-    },
-    getDiscount() {
-      return this.discount;
-    },
-    setDiscount(value) {
-      this.discount = value;
-    },
-    getOrders() {
-      return this.orders;
-    },
-    addOrder(cost, order) {
-      this.balance -= cost - cost * this.discount;
-      this.orders.push(order);
-    },
-    // Пиши код выше этой строки
-  };
+// const customer = {
+//     username: 'Mango',
+//     balance: 24000,
+//     discount: 0.1,
+//     orders: ['Burger', 'Pizza', 'Salad'],
+//     // Пиши код ниже этой строки
+//     getBalance() {
+//       return this.balance;
+//     },
+//     getDiscount() {
+//       return this.discount;
+//     },
+//     setDiscount(value) {
+//       this.discount = value;
+//     },
+//     getOrders() {
+//       return this.orders;
+//     },
+//     addOrder(cost, order) {
+//       this.balance -= cost - cost * this.discount;
+//       this.orders.push(order);
+//     },
+//     // Пиши код выше этой строки
+//   };
   
-  customer.setDiscount(0.15);
-  console.log(customer.getDiscount()); // 0.15
-  customer.addOrder(5000, 'Steak');
-  console.log(customer.getBalance()); // 19750
-  console.log(customer.getOrders()); // ['Burger', 'Pizza', 'Salad', 'Steak']
+//   customer.setDiscount(0.15);
+//   console.log(customer.getDiscount()); // 0.15
+//   customer.addOrder(5000, 'Steak');
+//   console.log(customer.getBalance()); // 19750
+//   console.log(customer.getOrders()); // ['Burger', 'Pizza', 'Salad', 'Steak']
+  
+
+
+// 4-7-10Сервису приготовления и доставки еды требуется функция генерации сообщений о статусе заказа.
+// Дополни функцию composeMessage(position) так, чтобы она возвращала строку в формате 
+// 'Готовим <блюдо> для <почта>. Ваш заказ <позиция>-й в очереди.' Позиция это значение параметра position -
+//  позиция элемента в массиве (на единицу больше чем индекс).
+// Не объявляй дополнительные параметры функции composeMessage(position).
+// Используй call для вызова функции в контексте одного объекта-заказа.
+// Используй this в теле функции для доступа к свойствам объекта-заказа в контексте которого она была вызывана.
+// Дополни код так, чтобы в переменной messages, с помощью метода map, получился массив сообщений о статусе заказов из массива orders.
+  
+//   const orders = [
+//     { email: 'solomon@topmail.ua', dish: 'Burger' },
+//     { email: 'artemis@coldmail.net', dish: 'Pizza' },
+//     { email: 'jacob@mail.com', dish: 'Taco' },
+//   ];
+  
+//   // Пиши код ниже этой строки
+//   function composeMessage(position) {
+//     return `Готовим ${this.dish} для ${this.email}. Ваш заказ ${position}-й в очереди.`
+//   }
+  
+//  const messages = orders.map(function (user, i) {return composeMessage.call(user, i +1);});
+//   console.log(messages);
   
