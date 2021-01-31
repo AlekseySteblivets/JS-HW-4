@@ -191,18 +191,46 @@
 
 // 4-8-10Выполни рефакторинг кода так, чтобы функция composeMessage(position) вызывалась методом apply.
 // const orders = [
-  const orders = [
-    { email: 'solomon@topmail.ua', dish: 'Burger' },
-    { email: 'artemis@coldmail.net', dish: 'Pizza' },
-    { email: 'jacob@mail.com', dish: 'Taco' },
-  ];
+//   const orders = [
+//     { email: 'solomon@topmail.ua', dish: 'Burger' },
+//     { email: 'artemis@coldmail.net', dish: 'Pizza' },
+//     { email: 'jacob@mail.com', dish: 'Taco' },
+//   ];
   
-  // Пиши код ниже этой строки
-  function composeMessage(position) {
-    return `Готовим ${this.dish} для ${this.email}. Ваш заказ ${position}-й в очереди.`;
-  }
+//   // Пиши код ниже этой строки
+//   function composeMessage(position) {
+//     return `Готовим ${this.dish} для ${this.email}. Ваш заказ ${position}-й в очереди.`;
+//   }
   
-  const messages = orders.map((order, index) =>
-    composeMessage.apply(order, [index + 1])
-  );
-console.log(messages);
+//   const messages = orders.map((order, index) =>
+//     composeMessage.apply(order, [index + 1])
+//   );
+// console.log(messages);
+
+
+
+// 4-9-10 Функция composeMessage(customerName) создаёт приветственные сообщения для ресторанов. 
+// Дополни код так, чтобы в переменных pizzaPalaceComposer и burgerShackComposer были её копии
+//  с привязанным контекстом к соответствующим объектам.
+
+const pizzaPalace = {
+  company: 'Pizza Palace',
+};
+
+const burgerShack = {
+  company: 'Burger Shack',
+};
+
+function composeMessage(customerName) {
+  return `${customerName}, всегда рады вас видеть в «${this.company}».`;
+}
+// Пиши код ниже этой строки
+
+const pizzaPalaceComposer = composeMessage.bind(pizzaPalace);
+const pizzaPalaceMessage = pizzaPalaceComposer('Манго');
+
+const burgerShackComposer = composeMessage.bind(burgerShack);
+const burgerShackMessage = burgerShackComposer('Поли');
+
+console.log(pizzaPalaceMessage);
+console.log(burgerShackMessage);
