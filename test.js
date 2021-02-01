@@ -274,5 +274,5 @@ console.log(secondInvoke);
 
 console.log(service.mailingList); // ['mango@mail.com', 'ajax@jmail.net', 'kiwi@mail.uk']
 
-
+// ??? спросить, как работает условие вызова строка 272.  я не понял почему этот маил удален из расслки.
 
